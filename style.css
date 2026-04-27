@@ -159,7 +159,7 @@ h2 {
   gap: 12px;
   flex-shrink: 0;
 }
-.logo-svg { width: 72px; height: 38px; }
+.logo-svg { width: 140px; height: 38px; }
 .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
 .logo-main {
   font-family: var(--font-main);
