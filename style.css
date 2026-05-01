@@ -271,7 +271,7 @@ h2 {
   min-height: 92vh;
   display: flex;
   align-items: center;
-  background: url('https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=1800&q=80') center/cover no-repeat;
+  background: url('images/auto-painting.webp') center/cover no-repeat;
 }
 .hero-overlay {
   position: absolute;
