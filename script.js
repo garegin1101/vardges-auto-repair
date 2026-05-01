@@ -428,7 +428,9 @@ form.addEventListener("submit", (e) => {
 
   if (!valid) return;
 
-  // Wire up _replyto so FormSubmit sends the _autoresponse to the customer
+  // CC the customer on the submission email (reliable delivery vs _autoresponse)
+  document.getElementById("fs-cc").value = emailField.value;
+  // Set Reply-To so the owner can reply directly to the customer
   document.getElementById("_replyto").value = emailField.value;
 
   const submitBtn = form.querySelector('[type="submit"]');
