@@ -395,7 +395,7 @@ document.getElementById("phone").addEventListener("input", (e) => {
 // ── Google Apps Script – customer confirmation email ────
 // Paste your deployed web app URL below after deploying the GAS project
 const GAS_URL =
-  "https://script.google.com/macros/s/AKfycbzO9aeDImlVm0LTyvkirBMBq-qDiiPpjieztApUA-NpDQmtmhioXRzEEr-LAIF-S2pxAA/exec";
+  "https://script.google.com/macros/s/AKfycbxUAo_2hfDuMc2DynkiduLZFb5C0l3bGibTvDgqRTbw1trPDQxkzprrECwV3zCQ_HysqA/exec";
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
