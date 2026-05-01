@@ -428,65 +428,28 @@ form.addEventListener("submit", (e) => {
 
   if (!valid) return;
 
+  // Wire up _replyto so FormSubmit sends the _autoresponse to the customer
+  document.getElementById("_replyto").value = emailField.value;
+
   const submitBtn = form.querySelector('[type="submit"]');
   submitBtn.disabled = true;
   submitBtn.textContent = "Sending…";
 
-  // Collect form data
-  const data = Object.fromEntries(new FormData(form));
+  // POST into the hidden iframe — no page redirect, no fetch/AJAX needed
+  form.submit();
 
-  // Ensure auto-reply goes to the submitter
-  data._replyto = data.email;
-
-  fetch("https://formsubmit.co/ajax/gareginmiqayelyan8@gmail.com", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((res) => {
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      return res.json();
-    })
-    .then((json) => {
-      console.log("FormSubmit response:", json);
-      if (json.success === "true" || json.success === true) {
-        form.reset();
-        successMsg.textContent = "✔ Thank you! We'll be in touch shortly.";
-        successMsg.style.borderColor = "";
-        successMsg.style.color = "";
-        successMsg.classList.add("show");
-        setTimeout(() => successMsg.classList.remove("show"), 6000);
-      } else {
-        // FormSubmit returns success:"false" when email not yet activated
-        const msg = json.message || "";
-        throw new Error(msg);
-      }
-    })
-    .catch((err) => {
-      console.error("FormSubmit error:", err.message);
-      const isActivation =
-        err.message.toLowerCase().includes("verif") ||
-        err.message.toLowerCase().includes("confirm") ||
-        err.message.toLowerCase().includes("activat");
-      successMsg.textContent = isActivation
-        ? "⚠ Please check gareginmiqayelyan8@gmail.com for an activation email from FormSubmit and click the confirmation link, then try again."
-        : "⚠ Something went wrong. Please call us at (323) 677-4777.";
-      successMsg.style.borderColor = "var(--red)";
-      successMsg.style.color = "var(--red)";
-      successMsg.classList.add("show");
-      setTimeout(() => {
-        successMsg.classList.remove("show");
-        successMsg.style.borderColor = "";
-        successMsg.style.color = "";
-      }, 9000);
-    })
-    .finally(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send Request";
-    });
+  // Show confirmation immediately after dispatching the POST
+  setTimeout(() => {
+    form.reset();
+    modelSelect.disabled = true;
+    successMsg.textContent = "✔ Thank you! We'll be in touch shortly.";
+    successMsg.style.borderColor = "";
+    successMsg.style.color = "";
+    successMsg.classList.add("show");
+    setTimeout(() => successMsg.classList.remove("show"), 6000);
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send Request";
+  }, 400);
 });
 
 // ── Smooth-scroll for hash links ─────────────────────────

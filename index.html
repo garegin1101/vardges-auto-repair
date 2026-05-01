@@ -416,12 +416,20 @@
       </div>
 
       <div class="contact-form-wrap">
-        <form class="contact-form" id="contact-form" novalidate>
-          <!-- FormSubmit config (no page redirect, no captcha, branded subject) -->
+        <!-- Hidden iframe absorbs the FormSubmit POST response so the page never redirects -->
+        <iframe name="fs-iframe" style="display:none;" aria-hidden="true" title=""></iframe>
+        <form class="contact-form" id="contact-form"
+              method="POST"
+              action="https://formsubmit.co/gareginmiqayelyan8@gmail.com"
+              target="fs-iframe"
+              novalidate>
+          <!-- FormSubmit config -->
           <input type="hidden" name="_subject" value="New Estimate Request – Starline Collision Center" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_autoresponse" value="Thank you for contacting Starline Collision Center! We have received your estimate request and a member of our team will be in touch with you within 1 business day.&#10;&#10;If you need immediate assistance, please call us at (323) 677-4777 or email us at Starlinecollisioncenter@gmail.com.&#10;&#10;Hours of Operation:&#10;Monday – Friday: 8 am – 6 pm&#10;Saturday: 9 am – 3 pm&#10;Sunday: By Appointment&#10;&#10;Thank you for choosing Starline Collision Center.&#10;2225 Long Beach Ave, Los Angeles, CA 90058" />
+          <!-- Populated by JS so FormSubmit knows where to send the customer auto-reply -->
+          <input type="hidden" id="_replyto" name="_replyto" value="" />
           <h3>Send Us a Message</h3>
           <div class="form-row">
             <div class="form-group">
