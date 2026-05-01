@@ -392,23 +392,56 @@ document.getElementById("phone").addEventListener("input", (e) => {
   e.target.value = formatted;
 });
 
+// Clear field error on input/change
+form.querySelectorAll("input, select, textarea").forEach((field) => {
+  field.addEventListener("input", () => {
+    field.classList.remove("error");
+    const errEl = field.parentElement.querySelector(".field-error");
+    if (errEl) errEl.remove();
+  });
+  field.addEventListener("change", () => {
+    field.classList.remove("error");
+    const errEl = field.parentElement.querySelector(".field-error");
+    if (errEl) errEl.remove();
+  });
+});
+
 // ── Google Apps Script – customer confirmation email ────
 // Paste your deployed web app URL below after deploying the GAS project
 const GAS_URL =
   "https://script.google.com/macros/s/AKfycbzgSjx0ZG78ITXLXaT2sbSOtERF1mPft-tNz2-iDbCnMxnrBZIC69M2UUApLbYFhZPnzQ/exec";
 
+function setFieldError(field, message) {
+  field.classList.add("error");
+  let errEl = field.parentElement.querySelector(".field-error");
+  if (!errEl) {
+    errEl = document.createElement("span");
+    errEl.className = "field-error";
+    field.after(errEl);
+  }
+  errEl.textContent = message;
+}
+
+function clearFieldErrors() {
+  form.querySelectorAll(".error").forEach((el) => el.classList.remove("error"));
+  form.querySelectorAll(".field-error").forEach((el) => el.remove());
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let valid = true;
 
-  // Clear previous errors
-  form.querySelectorAll(".error").forEach((el) => el.classList.remove("error"));
+  clearFieldErrors();
 
   // Required fields
   const required = form.querySelectorAll("[required]");
   required.forEach((field) => {
     if (!field.value.trim()) {
-      field.classList.add("error");
+      const label = form.querySelector(`label[for="${field.id}"]`);
+      const name = label
+        ? label.textContent.replace(" *", "").trim()
+        : "This field";
+      setFieldError(field, `${name} is required.`);
       valid = false;
     }
   });
@@ -419,16 +452,24 @@ form.addEventListener("submit", (e) => {
     emailField.value &&
     !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value)
   ) {
-    emailField.classList.add("error");
+    setFieldError(
+      emailField,
+      "Please enter a valid email address (e.g. john@example.com).",
+    );
     valid = false;
   }
 
   // Phone format (must be complete US number)
   const phoneField = form.querySelector("#phone");
   const phoneDigits = phoneField.value.replace(/\D/g, "");
-  if (phoneDigits.length !== 10) {
-    phoneField.classList.add("error");
+  if (phoneField.value && phoneDigits.length !== 10) {
+    setFieldError(phoneField, "Please enter a complete 10-digit phone number.");
     valid = false;
+  } else if (
+    !phoneField.value.trim() &&
+    !phoneField.classList.contains("error")
+  ) {
+    // already caught by required check above
   }
 
   if (!valid) return;
