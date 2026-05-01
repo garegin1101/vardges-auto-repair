@@ -40,6 +40,43 @@ body {
 }
 
 a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   FLOATING CALL BUTTON
+============================================================ */
+.fab-call {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.55);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fab-pulse 2.5s infinite;
+}
+.fab-call svg {
+  width: 26px;
+  height: 26px;
+}
+.fab-call svg path {
+  fill: var(--black);
+}
+.fab-call:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(212, 175, 55, 0.75);
+  animation: none;
+}
+@keyframes fab-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(212,175,55,0.55); }
+  70%  { box-shadow: 0 0 0 12px rgba(212,175,55,0); }
+  100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+}
 img { max-width: 100%; display: block; }
 ul { list-style: none; }
 
@@ -832,6 +869,82 @@ h2 {
   .stat-card { padding: 24px 16px; }
   .contact-form-wrap { padding: 20px 16px; }
   .section-header { margin-bottom: 40px; }
+}
+
+/* ============================================================
+   INSURANCE PROVIDERS MARQUEE
+============================================================ */
+.insurance-providers { padding: 80px 0; }
+
+.ip-marquee-outer {
+  margin-top: 48px;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.ip-marquee {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: ip-scroll 55s linear infinite;
+  will-change: transform;
+}
+
+.ip-marquee:hover,
+.ip-marquee.paused {
+  animation-play-state: paused;
+}
+
+@keyframes ip-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.ip-logo {
+  margin: 0 14px;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.09);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.ip-logo:hover {
+  box-shadow: 0 8px 30px rgba(212,175,55,0.38);
+  transform: translateY(-4px) scale(1.05);
+}
+
+.ip-logo img {
+  height: 52px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(100%) opacity(0.65);
+  transition: filter 0.35s ease;
+  pointer-events: none;
+}
+
+.ip-logo:hover img {
+  filter: grayscale(0%) opacity(1);
+}
+
+@media (max-width: 768px) {
+  .ip-logo { padding: 14px 20px; margin: 0 10px; }
+  .ip-logo img { height: 40px; max-width: 100px; }
+  .ip-marquee { animation-duration: 40s; }
+}
+
+@media (max-width: 480px) {
+  .ip-logo { padding: 12px 16px; margin: 0 8px; }
+  .ip-logo img { height: 34px; max-width: 84px; }
+  .ip-marquee { animation-duration: 32s; }
 }
 
 /* ============================================================

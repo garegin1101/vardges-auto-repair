@@ -1,0 +1,23 @@
+<svg viewBox="310 -12 310 210" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+              <defs>
+                <linearGradient id="ftGold" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#fff1a4" />
+                  <stop offset="45%" stop-color="#f3c45f" />
+                  <stop offset="100%" stop-color="#9f651f" />
+                </linearGradient>
+                <linearGradient id="ftRed" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#7e1818" />
+                  <stop offset="65%" stop-color="#d34a3f" />
+                  <stop offset="100%" stop-color="#771a18" />
+                </linearGradient>
+              </defs>
+              <!-- upper gold streak -->
+              <path d="M20 94 C150 35 330 32 408 38 L434 58 C310 51 155 54 20 94 Z" fill="url(#ftGold)" transform="translate(40 10)"/>
+              <!-- middle red streak -->
+              <path d="M40 118 C165 76 318 69 417 76 L405 98 C282 88 164 93 40 118 Z" fill="url(#ftRed)" transform="translate(10 5)"/>
+              <!-- lower gold streak -->
+              <path d="M73 146 C193 104 303 101 396 111 L384 134 C270 122 180 127 73 146 Z" fill="url(#ftGold)" />
+              <!-- star -->
+              <polygon points="482,2 514,70 590,74 531,121 551,194 482,151 414,194 433,121 375,74 450,70"
+                fill="url(#ftGold)" transform="translate(0 -10)" />
+            </svg>
