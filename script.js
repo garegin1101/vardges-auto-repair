@@ -392,6 +392,11 @@ document.getElementById("phone").addEventListener("input", (e) => {
   e.target.value = formatted;
 });
 
+// ── Google Apps Script – customer confirmation email ────
+// Paste your deployed web app URL below after deploying the GAS project
+const GAS_URL =
+  "https://script.google.com/macros/s/AKfycbzO9aeDImlVm0LTyvkirBMBq-qDiiPpjieztApUA-NpDQmtmhioXRzEEr-LAIF-S2pxAA/exec";
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let valid = true;
@@ -437,8 +442,19 @@ form.addEventListener("submit", (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "Sending…";
 
-  // POST into the hidden iframe — no page redirect, no fetch/AJAX needed
+  // POST into the hidden iframe — owner notification via FormSubmit
   form.submit();
+
+  // Send customer confirmation via Google Apps Script (fire-and-forget)
+  const fnameVal = form.querySelector("#fname").value.trim();
+  fetch(GAS_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ to: emailField.value, name: fnameVal }),
+  }).catch(() => {
+    /* silent – owner email already sent */
+  });
 
   // Show confirmation immediately after dispatching the POST
   setTimeout(() => {
