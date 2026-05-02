@@ -474,8 +474,14 @@ form.addEventListener("submit", (e) => {
 
   // VIN format (optional – 17 chars, no I/O/Q)
   const vinField = form.querySelector("#vin");
-  if (vinField.value.trim() && !/^[A-HJ-NPR-Z0-9]{17}$/i.test(vinField.value.trim())) {
-    setFieldError(vinField, "VIN must be exactly 17 characters (letters and digits, excluding I, O, Q).");
+  if (
+    vinField.value.trim() &&
+    !/^[A-HJ-NPR-Z0-9]{17}$/i.test(vinField.value.trim())
+  ) {
+    setFieldError(
+      vinField,
+      "VIN must be exactly 17 characters (letters and digits, excluding I, O, Q).",
+    );
     valid = false;
   }
 
