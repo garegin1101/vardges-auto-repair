@@ -710,11 +710,18 @@ h2 {
 .map-section { line-height: 0; }
 .map-section iframe { display: block; filter: grayscale(30%) invert(5%); }
 
-.service-icon .towing-icon {
+.service-icon img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   filter: brightness(0) invert(76%) sepia(65%) saturate(600%) hue-rotate(3deg);
+}
+.service-icon img.icon-natural {
+  filter: none;
+  border: 2px solid #d4af37;
+  border-radius: 50%;
+  padding: 2px;
+  box-sizing: border-box;
 }
 
 /* ============================================================
