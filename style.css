@@ -711,6 +711,50 @@ h2 {
 .map-section iframe { display: block; filter: grayscale(30%) invert(5%); }
 
 /* ============================================================
+   MAP ACTIONS
+============================================================ */
+.map-actions {
+  background: var(--dark3);
+  border-top: 1px solid rgba(212,175,55,0.2);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-apple-maps {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  border: 2px solid var(--gold);
+  transition: var(--transition);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-apple-maps svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+
+.btn-apple-maps:hover {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: var(--black);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.4);
+}
+
+/* ============================================================
    FOOTER
 ============================================================ */
 .footer {
