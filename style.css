@@ -403,7 +403,7 @@ h2 {
 
 .about-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 .stat-card {
@@ -432,6 +432,15 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--gray);
+}
+.google-rating-widget {
+  width: 100%;
+  min-width: 0;
+  min-height: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* ============================================================
@@ -921,7 +930,7 @@ h2 {
   .services-grid { grid-template-columns: 1fr; }
   .features-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .about-stats { grid-template-columns: 1fr 1fr; }
+  .about-stats { grid-template-columns: 1fr; }
 
   /* iOS: prevent auto-zoom when focusing inputs (requires font-size >= 16px) */
   .form-group input,
