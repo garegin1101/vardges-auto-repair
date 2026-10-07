@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment | Starline Collision Center</title>
+  <meta name="description" content="Request an appointment with Starline Collision Center in Los Angeles. Book a collision estimate, inspection, insurance claim visit, or repair drop-off." />
+  <link rel="canonical" href="https://starlinecollision.com/booking.html" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    .booking-page { min-height: 100vh; background: var(--black); }
+    .booking-header { border-bottom: 1px solid rgba(212,175,55,0.18); background: var(--dark); }
+    .booking-header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .booking-brand { font-family: var(--font-main); font-weight: 900; color: var(--gold); font-size: 1.1rem; }
+    .booking-brand span { display: block; color: var(--gray); font-size: 0.62rem; letter-spacing: 0.16em; }
+    .booking-home { color: var(--gray-light); font-size: 0.9rem; }
+    .booking-home:hover { color: var(--gold); }
+    .booking-main { padding: 64px 0 88px; }
+    .booking-heading { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+    .booking-heading h1 { margin: 0 0 14px; font-family: var(--font-main); font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.12; }
+    .booking-heading p:last-child { max-width: 620px; margin: 0 auto; color: var(--gray); }
+    .booking-layout { display: grid; grid-template-columns: minmax(230px, 0.72fr) minmax(0, 1.6fr); gap: 28px; align-items: start; }
+    .booking-details, .booking-calendar-wrap { border: 1px solid rgba(212,175,55,0.18); background: var(--dark2); border-radius: var(--radius); }
+    .booking-details { padding: 28px; }
+    .booking-details h2 { font-size: 1.15rem; margin-bottom: 16px; }
+    .booking-details ul { list-style: none; display: grid; gap: 13px; }
+    .booking-details li { color: var(--gray-light); font-size: 0.92rem; padding-left: 20px; position: relative; }
+    .booking-details li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+    .booking-note { margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: var(--gray); font-size: 0.85rem; }
+    .booking-note a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+    .booking-calendar-wrap { min-height: 560px; overflow: hidden; }
+    .booking-pending { min-height: 560px; padding: 48px 32px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .booking-pending[hidden], .booking-frame[hidden] { display: none; }
+    .booking-pending h2 { font-size: 1.5rem; margin-bottom: 10px; }
+    .booking-pending p { max-width: 440px; color: var(--gray); margin-bottom: 22px; }
+    .booking-frame { display: block; width: 100%; height: 1050px; border: 0; background: #fff; }
+    .booking-emergency { margin-top: 24px; color: var(--gray); text-align: center; font-size: 0.84rem; }
+    .booking-emergency a { color: var(--gold); font-weight: 700; }
+    @media (max-width: 760px) {
+      .booking-main { padding: 44px 0 64px; }
+      .booking-layout { grid-template-columns: 1fr; }
+      .booking-details { order: 2; }
+      .booking-calendar-wrap, .booking-pending { min-height: 500px; }
+      .booking-frame { height: 1250px; }
+    }
+    @media (max-width: 480px) {
+      .booking-header-inner { min-height: 68px; }
+      .booking-home { font-size: 0.82rem; }
+      .booking-details { padding: 22px; }
+      .booking-pending { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="booking-page">
+    <div class="topbar">
+      <span><a href="tel:3236774777">Call (323) 677-4777</a></span>
+      <span>2225 Long Beach Ave, Los Angeles, CA 90058</span>
+    </div>
+
+    <header class="booking-header">
+      <div class="container booking-header-inner">
+        <a href="index.html" class="booking-brand">STARLINE<span>COLLISION CENTER</span></a>
+        <a href="index.html" class="booking-home">Back to website</a>
+      </div>
+    </header>
+
+    <main class="booking-main">
+      <div class="container">
+        <div class="booking-heading">
+          <p class="section-label">Schedule a Visit</p>
+          <h1>Book an <span class="gold">Appointment</span></h1>
+          <p>Choose a time for a collision estimate, vehicle inspection, insurance claim visit, or repair drop-off. We will ask for your contact and vehicle details so our team can prepare.</p>
+        </div>
+
+        <div class="booking-layout">
+          <aside class="booking-details">
+            <h2>Have these details ready</h2>
+            <ul>
+              <li>Your full name, email, and phone number</li>
+              <li>Your vehicle year, make, and model</li>
+              <li>The reason for your visit</li>
+            </ul>
+            <p class="booking-note">Need help now, or is your vehicle unsafe to drive? Call us at <a href="tel:3236774777">(323) 677-4777</a>. For injury, fire, or immediate danger, contact emergency services first.</p>
+          </aside>
+
+          <section class="booking-calendar-wrap" aria-label="Appointment calendar">
+            <div class="booking-pending" id="booking-pending">
+              <p class="section-label">Online scheduling</p>
+              <h2>Call to schedule your visit</h2>
+              <p>The online calendar is temporarily unavailable. Call the shop and we will help you find a suitable time.</p>
+              <a class="btn btn-gold" href="tel:3236774777">Call (323) 677-4777</a>
+            </div>
+            <iframe class="booking-frame" id="booking-frame" title="Starline Collision Center appointment calendar" loading="lazy" hidden></iframe>
+          </section>
+        </div>
+
+        <p class="booking-emergency">For a free estimate without choosing a time, <a href="index.html#contact">send us a request online</a>.</p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const CAL_BOOKING_URL = "https://cal.com/garegin-miqayelyan-uvxhnv/starline-collision-appointment";
+    const bookingUrl = CAL_BOOKING_URL.trim();
+
+    if (bookingUrl) {
+      const calendarUrl = new URL(bookingUrl);
+      if (calendarUrl.hostname === "cal.com" || calendarUrl.hostname.endsWith(".cal.com")) {
+        calendarUrl.searchParams.set("embed", "1");
+        calendarUrl.searchParams.set("embedType", "iframe");
+        const calendar = document.getElementById("booking-frame");
+        calendar.src = calendarUrl.toString();
+        calendar.hidden = false;
+        document.getElementById("booking-pending").hidden = true;
+      }
+    }
+  </script>
+</body>
+</html>
